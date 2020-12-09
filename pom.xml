@@ -8,10 +8,10 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.geekbrains.mini-app</groupId>
-	<artifactId>mini-app</artifactId>
+	<groupId>com.geekbrains.mini-market</groupId>
+	<artifactId>mini-market</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mini-app</name>
+	<name>mini-market</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -41,6 +41,16 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
