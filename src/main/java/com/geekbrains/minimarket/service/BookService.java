@@ -1,5 +1,6 @@
 package com.geekbrains.minimarket.service;
 
+import com.geekbrains.minimarket.dto.BookDto;
 import com.geekbrains.minimarket.entites.Book;
 import com.geekbrains.minimarket.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,12 @@ import java.util.Optional;
 public class BookService {
 
     private BookRepository bookRepository;
+    private AuthorService authorService;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, AuthorService authorService) {
         this.bookRepository = bookRepository;
+        this.authorService = authorService;
     }
 
     public List<Book> getAllBooks() {
@@ -26,11 +29,19 @@ public class BookService {
         return bookRepository.findById(id);
     }
 
-    public Book save(Book book) {
-        return bookRepository.save(book);
+    public Book save(BookDto bookDto) {
+        Book b = new Book();
+        b.setId(bookDto.getId());
+        b.setTitle(bookDto.getTitle());
+        b.setAuthor(authorService.findByName(bookDto.getAuthor()).get());
+        return bookRepository.save(b);
     }
 
     public boolean existById(Long id) {
         return bookRepository.existsById(id);
+    }
+
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
     }
 }

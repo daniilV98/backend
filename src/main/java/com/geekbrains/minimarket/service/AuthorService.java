@@ -26,11 +26,7 @@ public class AuthorService {
         return authorRepository.findById(id);
     }
 
-    public Author save(Author author) {
-        return authorRepository.save(author);
-    }
-
-    public boolean existById(Long id) {
-        return authorRepository.existsById(id);
+    public Optional<Author> findByName(String name) {
+        return authorRepository.findByName(name);
     }
 }
